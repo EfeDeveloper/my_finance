@@ -13,67 +13,82 @@ Landing page and personal finance management app built with Flutter. Designed fo
 - [License](#license)
 
 ## Project Overview
-My Finance es una aplicación modular para iOS que te ayuda a gestionar tus finanzas personales. Incluye autenticación segura, pantallas intuitivas y componentes reutilizables. El proyecto se enfoca en una estructura limpia y diseño moderno usando Flutter y Material Design.
+My Finance is a modular iOS application that helps you manage your personal finances. It features secure authentication, intuitive screens, and reusable components. The project focuses on a clean structure and modern design using Flutter and Material Design.
 
 ## Tech Stack
-- **Flutter** 🐦 — Framework para apps multiplataforma.
-- **Dart** 💙 — Lenguaje de programación principal.
-- **Firebase** 🔥 — Autenticación y backend.
-- **Bloc** 🟦 — Gestión de estado reactiva.
-- **Material Design** 🎨 — UI moderna y responsiva.
-- **Unit Testing** 🧪 — Pruebas automatizadas.
+- **Flutter** 🐦 — Cross-platform app framework.
+- **Dart** 💙 — Main programming language.
+- **Firebase** 🔥 — Authentication and backend.
+- **Bloc** 🟦 — Reactive state management.
+- **Material Design** 🎨 — Modern and responsive UI.
+- **Unit Testing** 🧪 — Automated tests.
 
 ## Architecture & Technical Decisions
-- Estructura modular bajo `lib/` para mantener las funcionalidades aisladas.
-- Uso de Bloc para manejar el estado de la app de forma reactiva y escalable.
-- Integración de Firebase para autenticación y almacenamiento seguro.
-- Temas y estilos centralizados en `app_theme.dart`.
-- Estricta separación entre lógica de negocio y UI.
+- Modular structure under `lib/` to keep features isolated.
+- Bloc for scalable and reactive state management.
+- Firebase integration for secure authentication and storage.
+- Centralized themes and styles in `app_theme.dart`.
+- Strict separation between business logic and UI.
 
 ## Installation & Setup
-Asegúrate de tener Flutter instalado ([guía oficial](https://docs.flutter.dev/get-started/install)).
+Make sure you have Flutter installed ([official guide](https://docs.flutter.dev/get-started/install)).
 
 ```zsh
 git clone https://github.com/EfeDeveloper/my_finance.git
 cd my_finance
 flutter pub get
 
-# Abre el proyecto en Xcode para iOS desde la terminal
+# Open the project in Xcode for iOS from the terminal
 open ios/Runner.xcworkspace
 
+# From Xcode, select a simulator and press Run to launch the app on iOS.
+
+# Run unit tests
+flutter test
 ```
 
 ## Project Structure
 ```
 lib/
-├── app_theme.dart            # Temas y estilos
-├── firebase_options.dart     # Configuración de Firebase
-├── main.dart                 # Punto de entrada
-├── main_screen.dart          # Pantalla principal
-├── blocs/                    # Gestión de estado (Bloc)
-│   └── auth/                 # Bloc de autenticación
-├── models/                   # Modelos de datos
-├── repositories/             # Lógica de acceso a datos
-│   └── auth_repository.dart  # Repositorio de autenticación
-├── screens/                  # Pantallas de la app
-├── utils/                    # Utilidades
-└── widgets/                  # Componentes reutilizables
+├── app_theme.dart            # Themes and styles
+├── firebase_options.dart     # Firebase configuration
+├── main.dart                 # Entry point
+├── main_screen.dart          # Main screen
+├── blocs/                    # State management (Bloc)
+│   └── auth/                 # Auth bloc
+├── models/                   # Data models
+├── repositories/             # Data access logic
+│   └── auth_repository.dart  # Auth repository
+├── screens/                  # App screens
+├── utils/                    # Utilities
+└── widgets/                  # Reusable components
+
+android/                      # Android platform files
+ios/                          # iOS platform files
+macos/                        # macOS platform files
+web/                          # Web platform files
+windows/                      # Windows platform files
+pubspec.yaml                  # Project dependencies and config
+README.md                     # Project documentation
+LICENSE                       # License file
 ```
 
+> All code in `lib/` is shared across every supported platform (iOS, Android, macOS, Windows, Linux, Web). Platform folders contain configuration and native files specific to each target.
+
 ## Best Practices & Conventions
-- Mensajes de commit semánticos y claros.
-- Componentes pequeños y funcionales con tipado estricto.
-- Separación de lógica y UI para facilitar el mantenimiento.
-- Reutiliza componentes bajo `lib/widgets`.
-- Pruebas unitarias para asegurar calidad.
+- Semantic and clear commit messages.
+- Small, functional components with strict typing.
+- Separation of logic and UI for maintainability.
+- Reuse components under `lib/widgets`.
+- Unit tests to ensure quality.
 
 ## Contributing
-1. Haz un fork del repositorio y crea una rama para tu feature.
-2. Escribe tu código y agrega pruebas si aplica.
-3. Asegúrate de que la app compile y las pruebas pasen.
-4. Abre un Pull Request describiendo tus cambios.
+1. Fork the repository and create a feature branch.
+2. Write your code and add tests if applicable.
+3. Make sure the app builds and tests pass.
+4. Open a Pull Request describing your changes.
 
-¡Todas las contribuciones son bienvenidas!
+All contributions are welcome!
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
