@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:my_finance/app_router.dart';
 import 'package:my_finance/app_theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_finance/firebase_options.dart';
@@ -28,11 +30,15 @@ class MainApp extends StatelessWidget {
       create: (context) => {},
       child: BlocProvider(
         create: (context) => DummyCubit(),
-        child: MaterialApp(
-          theme: AppThemes.lightTheme,
-          darkTheme: AppThemes.darkTheme,
-          themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: const Scaffold(body: Center(child: Text('Hello World!'))),
+        child: Builder(
+          builder: (context) {
+            return MaterialApp.router(
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              routerConfig: AppRouter.router,
+            );
+          },
         ),
       ),
     );
