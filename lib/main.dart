@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_finance/app_router.dart';
 import 'package:my_finance/app_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_finance/firebase_options.dart';
 
 void main() async {
