@@ -46,7 +46,6 @@ firestore.rules
 firestore.indexes.json
 *.firebase/
 *.firebaserc
-GoogleService-Info.plist
 
 # VSCode related
 .vscode/
@@ -83,5 +82,4 @@ app.*.map.json
 
 # Environment files
 .env
-.env.*
 .envrc

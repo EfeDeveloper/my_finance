@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -17,29 +18,17 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -52,13 +41,71 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAaaGtIaCml6QNPPyHhZQlBSgphE9RHgL8',
-    appId: '1:258138942002:ios:7873ecd08f2400cc30ea2b',
-    messagingSenderId: '258138942002',
-    projectId: 'my-finance-21',
-    storageBucket: 'my-finance-21.firebasestorage.app',
-    iosBundleId: 'com.AdFerAppFinance.myFinance',
+  static final FirebaseOptions web = FirebaseOptions(
+    apiKey:
+        dotenv.env['API_KEY_WEB'] ?? 'AIzaSyCimqnKeI82JRTOuT4zGgXq5SO2OdrzhZk',
+    appId:
+        dotenv.env['APP_ID_WEB'] ?? '1:258138942002:web:54438f0bee4cb76430ea2b',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '258138942002',
+    projectId: dotenv.env['PROJECT_ID'] ?? 'my-finance-21',
+    authDomain:
+        dotenv.env['AUTH_DOMAIN_WEB'] ?? 'my-finance-21.firebaseapp.com',
+    storageBucket:
+        dotenv.env['STORAGE_BUCKET_WEB'] ?? 'my-finance-21.firebasestorage.app',
   );
 
+  static final FirebaseOptions android = FirebaseOptions(
+    apiKey:
+        dotenv.env['API_KEY_ANDROID'] ??
+        'AIzaSyCMoAh7MDg9E4VuT0cNjXXDcrtHxYkx5OA',
+    appId:
+        dotenv.env['APP_ID_ANDROID'] ??
+        '1:258138942002:android:dc4346953bf041fd30ea2b',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '258138942002',
+    projectId: dotenv.env['PROJECT_ID'] ?? 'my-finance-21',
+    storageBucket:
+        dotenv.env['STORAGE_BUCKET_ANDROID'] ??
+        'my-finance-21.firebasestorage.app',
+  );
+
+  static final FirebaseOptions ios = FirebaseOptions(
+    apiKey:
+        dotenv.env['API_KEY_IOS'] ?? 'AIzaSyAaaGtIaCml6QNPPyHhZQlBSgphE9RHgL8',
+    appId:
+        dotenv.env['APP_ID_IOS'] ?? '1:258138942002:ios:4cfd832ec90eb83d30ea2b',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '258138942002',
+    projectId: dotenv.env['PROJECT_ID'] ?? 'my-finance-21',
+    storageBucket:
+        dotenv.env['STORAGE_BUCKET_IOS'] ?? 'my-finance-21.firebasestorage.app',
+    iosBundleId:
+        dotenv.env['IOS_BUNDLE_ID_IOS'] ?? 'com.EdFerAppFinance.myFinance',
+  );
+
+  static final FirebaseOptions macos = FirebaseOptions(
+    apiKey:
+        dotenv.env['API_KEY_IOS'] ?? 'AIzaSyAaaGtIaCml6QNPPyHhZQlBSgphE9RHgL8',
+    appId:
+        dotenv.env['APP_ID_IOS'] ?? '1:258138942002:ios:3ad84aaf2838c94030ea2b',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '258138942002',
+    projectId: dotenv.env['PROJECT_ID'] ?? 'my-finance-21',
+    storageBucket:
+        dotenv.env['STORAGE_BUCKET_IOS'] ?? 'my-finance-21.firebasestorage.app',
+    iosBundleId: dotenv.env['IOS_BUNDLE_ID_MACOS'] ?? 'com.example.myFinance',
+  );
+
+  static final FirebaseOptions windows = FirebaseOptions(
+    apiKey:
+        dotenv.env['API_KEY_WINDOWS'] ??
+        'AIzaSyCimqnKeI82JRTOuT4zGgXq5SO2OdrzhZk',
+    appId:
+        dotenv.env['APP_ID_WINDOWS'] ??
+        '1:258138942002:web:17ac7f4a05a4705230ea2b',
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '258138942002',
+    projectId: dotenv.env['PROJECT_ID'] ?? 'my-finance-21',
+    authDomain:
+        dotenv.env['AUTH_DOMAIN_WINDOWS'] ?? 'my-finance-21.firebaseapp.com',
+    storageBucket:
+        dotenv.env['STORAGE_BUCKET_WINDOWS'] ??
+        'my-finance-21.firebasestorage.app',
+  );
 }
