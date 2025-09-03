@@ -30,8 +30,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<AuthLogoutRequest>((event, emit) async {
-      await authRepository.signOut();
-      emit(state.copyWith(isSubmitting: false, isAuthenticated: false));
+      try {
+        await authRepository.signOut();
+        emit(state.copyWith(isAuthenticated: false));
+      } catch (e) {
+        emit(
+          state.copyWith(isAuthenticated: false, errorMessage: e.toString()),
+        );
+      }
     });
   }
 }

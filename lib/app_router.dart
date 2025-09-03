@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:my_finance/screens/dashboard_screen.dart';
 import 'package:my_finance/screens/login_screen.dart';
 import 'package:my_finance/screens/profile_screen.dart';
-// import 'package:my_finance/screens/spending_screen.dart';
-// import 'package:my_finance/screens/wallet_screen.dart';
+import 'package:my_finance/screens/spending_screen.dart';
+import 'package:my_finance/screens/wallet_screen.dart';
 import 'package:my_finance/widgets/nav_bar.dart';
 
 class AppRouter {
@@ -51,14 +51,14 @@ class AppRouter {
             path: '/dashboard',
             builder: (context, state) => const DashboardScreen(),
           ),
-          // GoRoute(
-          //   path: '/spending',
-          //   builder: (context, state) => const SpendingScreen(),
-          // ),
-          // GoRoute(
-          //   path: '/wallet',
-          //   builder: (context, state) => const WalletScreen(),
-          // ),
+          GoRoute(
+            path: '/spending',
+            builder: (context, state) => const SpendingScreen(),
+          ),
+          GoRoute(
+            path: '/wallet',
+            builder: (context, state) => const WalletScreen(),
+          ),
           GoRoute(
             path: '/profile',
             builder: (context, state) => const ProfileScreen(),
